@@ -1,26 +1,5 @@
 <template>
   <div class="flex w-full overflow-y-hidden">
-    <section
-      v-if="visible"
-      class="flex"
-    >
-      <nav-sidebar
-        v-model="currentTab"
-        :items="tabs"
-      />
-      <div
-        v-for="(items, key) in filters"
-        :key="key"
-        class="sticky top-0 flex h-full"
-      >
-        <filter-list
-          v-if="currentTab === key"
-          v-model="conditions[key]"
-          class="w-52"
-          :items="items"
-        />
-      </div>
-    </section>
     <div
       class="flex h-screen w-full flex-col overflow-hidden bg-gray-50 dark:bg-neutral-900"
     >
@@ -92,8 +71,8 @@ import {
 } from '@heroicons/vue/24/outline';
 import { notify } from 'notiwind';
 import BookmarkToolbar from '@/components/bookmark/BookmarkToolbar.vue';
-import NavSidebar from '@/components/NavSidebar.vue';
-import FilterList from '@/components/FilterList.vue';
+// import NavSidebar from '@/components/NavSidebar.vue';
+// import FilterList from '@/components/FilterList.vue';
 import BookmarkCard from '@/components/bookmark/BookmarkCard.vue';
 import BookmarkStorage from '@/storage/bookmark';
 import initStorage from '@/storage/idb/idb';
@@ -106,7 +85,7 @@ import SearchConditions from '@/components/search/SearchConditions.vue';
 import BookmarkDisplay from '@/components/search/BookmarkDisplay.vue';
 import BookmarkLayout from '@/components/bookmark/BookmarkLayout.vue';
 import AppInfiniteScroll from '@/components/app/AppInfiniteScroll.vue';
-import AppSpinner from '@/components/app/AppSpinner.vue';
+// import AppSpinner from '@/components/app/AppSpinner.vue';
 import BookmarkForm from '@/components/bookmark/BookmarkForm.vue';
 import tagHelper from '@/helpers/tags';
 
@@ -121,12 +100,12 @@ const currentBookmark = ref({});
 const drawer = ref(null);
 
 const displayType = ref(localStorage.getItem('displayType') ?? 'masonry');
-const currentTab = ref('folders');
-const tabs = [
-  { value: 'folders', icon: FolderOpenIcon },
-  { value: 'tags', icon: HashtagIcon },
-  { value: 'domains', icon: GlobeAltIcon },
-];
+// const currentTab = ref('folders');
+// const tabs = [
+//   { value: 'folders', icon: FolderOpenIcon },
+//   { value: 'tags', icon: HashtagIcon },
+//   { value: 'domains', icon: GlobeAltIcon },
+// ];
 const scroll = ref(null);
 const bookmarks = ref([]);
 
@@ -146,7 +125,7 @@ const conditions = reactive({ ...defaultConditions });
 const folders = ref([]);
 const tags = ref([]);
 const domains = ref([]);
-const filters = reactive({ folders, tags, domains });
+// const filters = reactive({ folders, tags, domains });
 const removeAllSearchOptions = () => {
   conditions.tags = [];
   conditions.domains = [];
