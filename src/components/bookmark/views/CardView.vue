@@ -22,6 +22,13 @@
         <p class="break-words py-2 text-gray-700 dark:text-neutral-300">
           {{ bookmark.description }}
         </p>
+        <div class="flex space-x-2">
+          <app-badge
+            v-for="(value, key) in bookmark.tags"
+            :key="key"
+            :badge="value"
+          />
+        </div>
       </div>
     </a>
     <slot name="actions" />
@@ -31,6 +38,7 @@
 import { computed } from 'vue';
 import BookmarkFavicon from '@/components/bookmark/BookmarkFavicon.vue';
 import BookmarkImage from '@/components/bookmark/BookmarkImage.vue';
+import AppBadge from '@/components/app/AppBadge.vue';
 
 const props = defineProps({
   bookmark: {

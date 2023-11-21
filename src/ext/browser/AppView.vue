@@ -64,15 +64,8 @@
 import {
   toRaw, reactive, ref, watch, onMounted,
 } from 'vue';
-import {
-  FolderOpenIcon,
-  HashtagIcon,
-  GlobeAltIcon,
-} from '@heroicons/vue/24/outline';
 import { notify } from 'notiwind';
 import BookmarkToolbar from '@/components/bookmark/BookmarkToolbar.vue';
-// import NavSidebar from '@/components/NavSidebar.vue';
-// import FilterList from '@/components/FilterList.vue';
 import BookmarkCard from '@/components/bookmark/BookmarkCard.vue';
 import BookmarkStorage from '@/storage/bookmark';
 import initStorage from '@/storage/idb/idb';
@@ -85,7 +78,6 @@ import SearchConditions from '@/components/search/SearchConditions.vue';
 import BookmarkDisplay from '@/components/search/BookmarkDisplay.vue';
 import BookmarkLayout from '@/components/bookmark/BookmarkLayout.vue';
 import AppInfiniteScroll from '@/components/app/AppInfiniteScroll.vue';
-// import AppSpinner from '@/components/app/AppSpinner.vue';
 import BookmarkForm from '@/components/bookmark/BookmarkForm.vue';
 import tagHelper from '@/helpers/tags';
 
@@ -100,12 +92,6 @@ const currentBookmark = ref({});
 const drawer = ref(null);
 
 const displayType = ref(localStorage.getItem('displayType') ?? 'masonry');
-// const currentTab = ref('folders');
-// const tabs = [
-//   { value: 'folders', icon: FolderOpenIcon },
-//   { value: 'tags', icon: HashtagIcon },
-//   { value: 'domains', icon: GlobeAltIcon },
-// ];
 const scroll = ref(null);
 const bookmarks = ref([]);
 
@@ -125,7 +111,6 @@ const conditions = reactive({ ...defaultConditions });
 const folders = ref([]);
 const tags = ref([]);
 const domains = ref([]);
-// const filters = reactive({ folders, tags, domains });
 const removeAllSearchOptions = () => {
   conditions.tags = [];
   conditions.domains = [];
