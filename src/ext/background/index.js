@@ -20,6 +20,13 @@ const requestTimeout = 4000;
     chrome.storage.session.clear();
   });
 
+  chrome.contextMenus.removeAll(function() {
+    chrome.contextMenus.create({
+     id: "1",
+     title: "Save this page to Favbox",
+     contexts:["page"],  // ContextType
+    }); })
+
   // https://developer.chrome.com/docs/extensions/reference/tabs/#event-onUpdated
   chrome.tabs.onUpdated.addListener(async (tabId, info) => {
     if (info.status === 'loading') {
