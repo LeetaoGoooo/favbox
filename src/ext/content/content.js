@@ -14,6 +14,11 @@ try {
   console.error('Content script error', e);
 }
 
+function showPopup() {
+  console.log("show popup");
+  document.getElementById("favbox-popup").style["display"] = "flex";
+}
+
 const container = document.createElement('div');
 container.style.display = 'none';
 container.style.position = 'fixed';
@@ -92,4 +97,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'getHTML') {
     sendResponse({ html: document.documentElement.outerHTML });
   }
+});
+
+fetch(chrome.runtime.getURL('/ext/inject/popup.html'))
+.then(response => response.text())
+.then(html => {
+  document.body.insertAdjacentHTML('beforeend', html);
+}).catch(err => {
+  console.log(err)
 });
