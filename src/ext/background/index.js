@@ -21,7 +21,14 @@ const requestTimeout = 4000;
   });
 
   chrome.contextMenus.onClicked.addListener(function (_) {
-    chrome.runtime.sendMessage({ action: 'popup' });
+    chrome.tabs.query({
+      "active": true,
+      "currentWindow": true
+  }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+          "action": "popup"
+      });
+  });
   })
 
   chrome.contextMenus.removeAll(function () {
