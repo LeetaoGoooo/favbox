@@ -25,7 +25,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["ext/inject/popup.html"],
+      "resources": ["ext/inject/popup.html","ext/inject/popup.js"],
       "matches": ["<all_urls>"]
     }
   ]

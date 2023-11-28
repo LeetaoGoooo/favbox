@@ -15,8 +15,7 @@ try {
 }
 
 function showPopup() {
-  console.log("show popup");
-  document.getElementById("favbox-popup").style["display"] = null;
+  document.getElementById("favbox-popup").style.display = null;
 }
 
 const container = document.createElement('div');
@@ -109,3 +108,11 @@ fetch(chrome.runtime.getURL('/ext/inject/popup.html'))
   }).catch(err => {
     console.log(err)
   });
+
+
+var s = document.createElement('script');
+s.src = chrome.runtime.getURL('/ext/inject/popup.js');
+s.onload = function() {
+  this.remove();
+};
+(document.head || document.documentElement).appendChild(s);

@@ -1,4 +1,5 @@
 <!-- to make it visible, change "display:none" into "display: fixed" -->
+<!-- TODO add close button -->
 <div id="favbox-popup" style="display: none;
       position: fixed;top: 0;right: 0;z-index: 99999;">
     <form style="display: flex;
@@ -10,30 +11,24 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
         <div style="display: flex; justify-content: space-between; width: 300px;">
             <caption style="text-align: right; font-weight: bold; margin-bottom: 10px;">Favbox</caption>
-            <button type="button" name="open"
-                style="width: 80px; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Open</button>
+            <button id="favbox-popup-close-button" type="button" name="close" 
+                style="width: 20px; height: 20px; padding: 0; margin: 0; background-color: transparent; border: none; cursor: pointer;" onclick="closeFavBoxPopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
         </div>
-        <input type="text" id="title" name="Title" placeholder="Title"
+        <input type="text" id="favbox-popup-title" name="Title" placeholder="Title"
             style="width: 300px; padding: 10px; margin-top: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
-        <input type="text" id="tags" name="Tags" placeholder="Tags"
-            style="width: 300px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;"
-            onkeyup="generateBadge(this)">
+        <input type="text" id="favbox-popup-tag" name="Tags" placeholder="Tags"
+            style="width: 300px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
 
-        <span style="  background-color: #4CAF50;
-            color: white;
-            padding: 4px 8px;
-            text-align: center;
-            border-radius: 5px;">
-            ghost
-            <svg t="1701074473430" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                p-id="4232" width="16" height="16">
-                <path
-                    d="M512 482.135L708.27 285.87c8.53-8.535 21.33-8.535 29.86 0 8.54 8.535 8.54 21.335 0 29.865L541.87 512l196.26 196.27c8.54 8.53 8.54 21.33 0 29.86-8.53 8.54-21.33 8.54-29.86 0L512 541.87 315.735 738.13c-8.535 8.54-21.335 8.54-29.865 0-8.535-8.53-8.535-21.33 0-29.86L482.135 512 281.6 315.735c-8.535-8.535-8.535-21.335 0-29.87s21.335-8.535 29.865 0L512 482.135z"
-                    fill="#ffffff" p-id="4233"></path>
-            </svg>
-        </span>
+        <div id="favbox-popup-tags" style="overflow-x: auto; width: 300px;">
+            <!-- Add your children elements here -->
+        </div>
 
-        <button type="submit" name="save"
+        <button type="button" name="save"
             style="width: 150px; margin-top: 10px; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Save</button>
     </form>
 </div>
