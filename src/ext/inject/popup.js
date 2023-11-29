@@ -10,7 +10,7 @@ function createFavBoxTag(tag) {
     padding: 4px 8px;
     text-align: center;
     border-radius: 5px;
-    margin:4px 8px">
+    margin:4px 8px" onclick="removeSelf(this)">
     ${tag}
     <svg t="1701074473430" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns=http://www.w3.org/2000/svg"
         p-id="4232" width="16" height="16">
@@ -28,5 +28,10 @@ favboxInputTag.addEventListener("keydown", (e) => {
     if (e.key === 'Enter') {
         console.log("key Enter was pressed");
         createFavBoxTag(e.target.value.trim());
+        e.target.value = "";
     }
 })
+
+function removeSelf(target) {
+    target.remove()
+}

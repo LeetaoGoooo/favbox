@@ -105,14 +105,15 @@ fetch(chrome.runtime.getURL('/ext/inject/popup.html'))
   .then(response => response.text())
   .then(html => {
     document.body.insertAdjacentHTML('beforeend', html);
+
+    // inject javascript after html
+    var s = document.createElement('script');
+    s.src = chrome.runtime.getURL('/ext/inject/popup.js');
+    s.onload = function() {
+      this.remove();
+    };
+    (document.head || document.documentElement).appendChild(s);
+
   }).catch(err => {
     console.log(err)
   });
-
-
-var s = document.createElement('script');
-s.src = chrome.runtime.getURL('/ext/inject/popup.js');
-s.onload = function() {
-  this.remove();
-};
-(document.head || document.documentElement).appendChild(s);

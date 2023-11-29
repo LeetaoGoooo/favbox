@@ -1,5 +1,4 @@
 <!-- to make it visible, change "display:none" into "display: fixed" -->
-<!-- TODO add close button -->
 <div id="favbox-popup" style="display: none;
       position: fixed;top: 0;right: 0;z-index: 99999;">
     <form style="display: flex;
@@ -22,7 +21,7 @@
         <input type="text" id="favbox-popup-title" name="Title" placeholder="Title"
             style="width: 300px; padding: 10px; margin-top: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
         <input type="text" id="favbox-popup-tag" name="Tags" placeholder="Tags"
-            style="width: 300px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            style="width: 300px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" onkeydown="favboxInputTagKeyDown(this)">
 
         <div id="favbox-popup-tags" style="overflow-x: auto; width: 300px;">
             <!-- Add your children elements here -->
